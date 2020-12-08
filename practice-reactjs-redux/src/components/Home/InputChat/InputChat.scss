@@ -1,0 +1,26 @@
+.input--chat-text {
+    background-color: rgb(197, 197, 197);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+
+    &:focus {
+        outline: none;
+    }
+}
+.button--send {
+    background-color: rgb(197, 197, 197);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 4px;
+    transition: 0.2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
