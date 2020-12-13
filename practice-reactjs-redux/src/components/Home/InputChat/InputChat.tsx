@@ -9,13 +9,16 @@ const connector = connect(null, mapDispatchToProps)
 type Props = ConnectedProps<typeof connector>;
 
 class InputChat extends React.Component<Props> {
-  newChatText = "";
+  state = {
+    newChatText : ""
+  }
   handleSend = () => {
-    this.props.addChat(this.newChatText);
+    this.props.addChat(this.state.newChatText);
+    this.setState({newChatText: ""})
   };
 
   handleChange = (event:ChangeEvent<HTMLInputElement>) => {
-    this.newChatText = event.target.value;
+    this.setState({newChatText: event.target.value})
   };
 
   render() {
@@ -25,6 +28,7 @@ class InputChat extends React.Component<Props> {
           className="input--chat-text"
           type="text"
           placeholder="Enter message"
+          value={this.state.newChatText}
           onChange={this.handleChange}
         />
         <button className="button--send" onClick={() => this.handleSend()}>
