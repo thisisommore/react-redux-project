@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Fragment } from "react";
 import "./InputChat.scss";
-import { addChat } from "../../../redux/action";
+import { addChat } from "../../../redux";
 import { connect,ConnectedProps } from "react-redux";
 
 var mapDispatchToProps = { addChat };
