@@ -1,14 +1,18 @@
-import {configureStore,createReducer,createAction} from '@reduxjs/toolkit';
+import {configureStore,createSlice} from '@reduxjs/toolkit';
 import { IState } from './interface';
 
 var initialState : IState = {
     chats: []
 }
 
-export const addChat = createAction<String>("ADD_CHAT");
-
-const reducer = createReducer(initialState,{
-    [addChat.type]:(state,{payload})=>void state.chats.push(payload)
+const chatSlice = createSlice({
+    name: "chat",
+    initialState,
+    reducers: {
+        addChat: (state,action)=>void state.chats.push(action.payload)
+    }
 })
 
-export default configureStore({reducer});
+export const addChat = chatSlice.actions.addChat;
+
+export default configureStore({reducer:chatSlice.reducer});
