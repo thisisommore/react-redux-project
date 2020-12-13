@@ -1,15 +1,20 @@
-import React, { Fragment } from "react";
+import React, { ChangeEvent, Fragment } from "react";
 import "./InputChat.scss";
 import { addChat } from "../../../redux/action";
-import { connect } from "react-redux";
+import { connect,ConnectedProps } from "react-redux";
 
-class InputChat extends React.Component {
+var mapDispatchToProps = { addChat };
+const connector = connect(null, mapDispatchToProps)
+
+type Props = ConnectedProps<typeof connector>;
+
+class InputChat extends React.Component<Props> {
   newChatText = "";
   handleSend = () => {
     this.props.addChat(this.newChatText);
   };
 
-  handleChange = (event) => {
+  handleChange = (event:ChangeEvent<HTMLInputElement>) => {
     this.newChatText = event.target.value;
   };
 
@@ -30,5 +35,4 @@ class InputChat extends React.Component {
   }
 }
 
-var mapDispatchToProps = { addChat };
-export default connect(null, mapDispatchToProps)(InputChat);
+export default connector(InputChat)

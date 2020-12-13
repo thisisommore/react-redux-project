@@ -1,10 +1,11 @@
-import { ADD_CHAT } from "./action";
+import { ADD_CHAT, IAddChatAction } from "./action";
+import { IState } from "./interface";
 
 var initialState = {
   chats: []
 };
 
-function reducer(state = initialState, action) {
+function reducer(state :IState = initialState, action: IAddChatAction) {
   switch (action.type) {
     case ADD_CHAT:
       return { ...state, chats: [...state.chats].concat(action.msg) };
